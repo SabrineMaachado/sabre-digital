@@ -1,0 +1,67 @@
+/* Dakar Digital — tokens gerados do design system (tokens.json). */
+/* Fontes: no site elas são servidas pelo próprio domínio (pacotes @fontsource), sem Google Fonts. */
+
+/* Tema Grafite (escuro) é o padrão */
+:root, [data-theme="dark"] {
+  --bg: #141416;
+  --surface: #1C1D20;
+  --surface-glass: rgba(244,243,240,0.06);
+  --ink: #F4F3F0;
+  --ink-muted: #B5B1AA;
+  --line: rgba(244,243,240,0.12);
+  --orange: #F5660D;
+  --orange-light: #FF9A52;
+  --orange-soft: #FFB27A;
+  --orange-deep: #D45200;
+  --orange-text: #FF9A52;
+  --on-orange: #FFFFFF;
+  --graphite: #141416;
+  --space-gray: #4A4D54;
+  --sand: #EDE6DA;
+  --mist: #F4F3F0;
+  --white: #FFFFFF;
+  /* Complementares: tons da família laranja e neutros usados na landing aprovada */
+  --btn-start: #FF7A2A;
+  --btn-hover-start: #FF8A3D;
+  --btn-hover-mid: #FF7027;
+  --orange-pale: #FFC08F;
+  --orange-spark: #FFD2AE;
+  --orange-white: #FFF1E6;
+  --graphite-raised: #1A1B1E;
+  --ink-faint: #8F8B85;
+  --ink-soft: #45413C;
+  --shadow-ink: #262626;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 120px;
+  --radius-sm: 16px;
+  --radius-md: 24px;
+  --radius-lg: 34px;
+  --radius-xl: 48px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 22px 70px rgba(38,38,38,0.12);
+  --shadow-deep: 0 30px 90px rgba(0,0,0,0.26);
+  --shadow-glow: 0 16px 44px rgba(245,102,13,0.4);
+  --blur-light: 56px;
+  --blur-glass: 16px;
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+/* Tema Névoa (claro) para seções claras */
+[data-theme="light"] {
+  --bg: #F4F3F0;
+  --surface: #FFFFFF;
+  --surface-glass: rgba(255,255,255,0.68);
+  --ink: #141416;
+  --ink-muted: #5B5650;
+  --line: rgba(20,20,22,0.08);
+  --orange-text: #B84A00;
+}

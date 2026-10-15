@@ -1,0 +1,68 @@
+---
+// Medição do site.
+// - Cloudflare Web Analytics: sem cookies, carrega sempre que o token existir.
+// - Pixel da Meta: usa cookies; só carrega depois do "Aceitar" no aviso.
+import { site } from '../config/site';
+
+const { cloudflareToken, metaPixelId } = site.analytics;
+---
+{cloudflareToken && (
+  <script
+    is:inline
+    defer
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon={JSON.stringify({ token: cloudflareToken })}
+  ></script>
+)}
+
+{metaPixelId && (
+  <>
+    <div class="consent" data-theme="dark" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+      <p>
+        Usamos cookies da Meta para medir nossos anúncios. Eles só são ativados se você aceitar.
+        Saiba mais na <a href="/politica-de-privacidade/">Política de privacidade</a>.
+      </p>
+      <div class="consent-actions">
+        <button type="button" class="btn btn-g btn-sm" data-consent="denied">Recusar</button>
+        <button type="button" class="btn btn-g btn-sm" data-consent="granted">Aceitar</button>
+      </div>
+    </div>
+    <script is:inline define:vars={{ metaPixelId }}>
+      (function () {
+        var KEY = 'dk-consent';
+        var banner = document.querySelector('.consent');
+        var read = function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+        var save = function (v) { try { localStorage.setItem(KEY, v); } catch (e) {} };
+
+        var loadPixel = function () {
+          if (window.fbq) return;
+          !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+          n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+          document,'script','https://connect.facebook.net/en_US/fbevents.js');
+          window.fbq('init', metaPixelId);
+          window.fbq('track', 'PageView');
+        };
+
+        var choice = read();
+        if (choice === 'granted') loadPixel();
+        else if (!choice) banner.hidden = false;
+
+        banner.querySelectorAll('[data-consent]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            var value = b.getAttribute('data-consent');
+            save(value);
+            banner.hidden = true;
+            if (value === 'granted') loadPixel();
+            else if (window.fbq) location.reload();
+          });
+        });
+
+        document.querySelectorAll('[data-consent-open]').forEach(function (b) {
+          b.addEventListener('click', function () { banner.hidden = false; });
+        });
+      })();
+    </script>
+  </>
+)}

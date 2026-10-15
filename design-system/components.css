@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@300;400&display=swap");
+
+/* Dakar Digital — componentes em CSS puro. Use as classes dk-* no HTML da landing. */
+
+.dk { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.dk-eyebrow { font-family: var(--font-mono); font-weight: 300; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange-text); }
+.dk-title { margin: 0; font-family: var(--font-display); font-weight: 200; letter-spacing: -0.055em; line-height: 1; text-wrap: balance; }
+.dk-accent { font-weight: 300; background: linear-gradient(100deg, var(--orange-soft), var(--orange) 60%, var(--orange-deep)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---------- Wordmark ---------- */
+.dk-lockup { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 0.12em; font-size: 72px; }
+.dk-wordmark { display: inline-flex; align-items: baseline; font-family: var(--font-display); font-weight: 300; letter-spacing: -0.06em; line-height: 0.9; color: var(--ink); }
+.dk-wordmark__word { display: inline-block; transform: skewX(-9deg); }
+.dk-lockup__tag { font-family: var(--font-mono); font-weight: 300; font-size: 0.11em; letter-spacing: 0.86em; color: var(--orange-text); padding-left: 0.1em; }
+
+/* ---------- Buttons ---------- */
+.dk-btn { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 56px; padding: 0 28px; border: 0; border-radius: var(--radius-pill); font-family: var(--font-body); font-weight: 700; font-size: 16px; line-height: 1.2; text-decoration: none; cursor: pointer; transition: transform .3s, box-shadow .3s, background .3s; }
+.dk-btn:hover { transform: translateY(-2px); }
+.dk-btn:focus-visible { outline: 2px solid var(--orange-light); outline-offset: 3px; }
+/* Luz que percorre a borda: presente nos dois botões. */
+@property --dk-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.dk-btn::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 2px; background: conic-gradient(from var(--dk-a), transparent 0deg, transparent 240deg, rgba(255,178,122,0.6) 300deg, #FFF1E6 340deg, transparent 360deg); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: dk-border 3.2s linear infinite; pointer-events: none; }
+.dk-btn:hover::before { animation-duration: 1.8s; }
+.dk-btn--primary { background: linear-gradient(145deg, #FF7A2A, var(--orange) 55%, var(--orange-deep)); color: var(--on-orange); font-size: 19px; box-shadow: var(--shadow-glow), inset 0 1px 0 rgba(255,255,255,0.3); }
+.dk-btn--primary:hover { background: linear-gradient(145deg, #FF8A3D, #FF7027 55%, var(--orange)); }
+.dk-btn--ghost { background: transparent; color: var(--ink); border: 1px solid rgba(245,102,13,0.55); font-weight: 600; font-size: 19px; }
+.dk-btn--ghost:hover { border-color: var(--orange); }
+.dk-btn--sm { min-height: 46px; padding: 0 22px; font-size: 16px; }
+.dk-btn--sm.dk-btn--primary { font-size: 16px; }
+
+/* ---------- Glass lights (fundo) ---------- */
+.dk-scene { position: relative; overflow: hidden; background: var(--bg); isolation: isolate; }
+.dk-scene > * { position: relative; }
+.dk-scene > .dk-light, .dk-scene > .dk-grain { position: absolute; }
+.dk-light { z-index: -1; pointer-events: none; border-radius: 50%; background: radial-gradient(closest-side, rgba(245,102,13,0.9), rgba(245,102,13,0.32) 48%, rgba(245,102,13,0) 100%); filter: blur(56px) saturate(1.16); opacity: 0.42; will-change: transform; }
+.dk-light--a { top: -34%; left: 8%; width: 58%; aspect-ratio: 1 / 0.95; transform: rotate(-8deg); animation: dk-light-a 18s ease-in-out infinite alternate; }
+.dk-light--b { right: 3%; bottom: -38%; width: 58%; aspect-ratio: 1 / 0.95; transform: rotate(9deg); animation: dk-light-b 23s ease-in-out infinite alternate; }
+.dk-light--c { top: 28%; left: 42%; width: 30%; aspect-ratio: 0.75; opacity: 0.22; animation: dk-light-c 20s ease-in-out infinite alternate; }
+.dk-grain { inset: 0; z-index: -1; pointer-events: none; background-image: radial-gradient(rgba(244,243,240,0.08) 1px, transparent 1px); background-size: 4px 4px; mix-blend-mode: screen; opacity: 0.6; }
+
+/* ---------- Cards ---------- */
+.dk-card { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); border-radius: var(--radius-lg); background: var(--surface-glass); border: 1px solid var(--line); box-shadow: var(--shadow-soft); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: transform .5s cubic-bezier(.2,.8,.2,1), border-color .5s; }
+.dk-card:hover { transform: translateY(-6px); }
+.dk-card__title { margin: 0; font-family: var(--font-display); font-weight: 300; font-size: 32px; letter-spacing: -0.04em; line-height: 1.1; }
+.dk-card__text { margin: 0; color: var(--ink-muted); font-size: 16px; line-height: 1.6; }
+.dk-card__foot { margin-top: auto; padding-top: var(--space-4); border-top: 1px solid var(--line); font-family: var(--font-mono); font-weight: 300; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); }
+.dk-card--featured { position: relative; overflow: hidden; isolation: isolate; background: var(--graphite); color: var(--mist); border-color: var(--orange); box-shadow: var(--shadow-deep), 0 0 50px rgba(245,102,13,0.18); }
+.dk-card--featured .dk-card__text, .dk-card--featured .dk-card__foot { color: rgba(244,243,240,0.75); }
+.dk-card--featured .dk-eyebrow { color: var(--orange-light); }
+.dk-card--featured::before { content: ""; position: absolute; z-index: -1; right: -120px; top: -140px; width: 340px; height: 320px; border-radius: 50%; background: radial-gradient(closest-side, rgba(245,102,13,0.9), rgba(245,102,13,0)); filter: blur(56px); opacity: .55; animation: dk-light-c 11s ease-in-out infinite alternate; }
+
+/* ---------- Motor de clientes ---------- */
+.dk-motor { display: flex; flex-direction: column; gap: var(--space-3); }
+.dk-track { position: relative; height: 20px; margin: 0 10%; }
+.dk-track::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; height: 1px; background: var(--line); }
+.dk-track__trail { position: absolute; left: 0; top: 9px; height: 1px; background: linear-gradient(90deg, rgba(245,102,13,0), var(--orange)); animation: dk-trail 7s cubic-bezier(.65,0,.35,1) infinite; }
+.dk-track__node { position: absolute; top: 5px; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; border: 1px solid var(--orange-light); background: var(--bg); box-sizing: border-box; }
+.dk-track__dot { position: absolute; top: 4px; width: 11px; height: 11px; margin-left: -5.5px; border-radius: 50%; background: #FFD2AE; box-shadow: 0 0 10px 3px rgba(255,154,82,0.9), 0 0 30px 10px rgba(245,102,13,0.45); animation: dk-travel 7s cubic-bezier(.65,0,.35,1) infinite; }
+.dk-stages { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-4); }
+.dk-stage { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-5); border-radius: var(--radius-lg); background: var(--surface-glass); border: 1px solid var(--line); box-shadow: var(--shadow-deep); transition: transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s; }
+.dk-stage:hover { transform: translateY(-6px); border-color: var(--orange-light); }
+.dk-stage__num { font-family: var(--font-mono); font-weight: 300; font-size: 13px; color: var(--orange-text); }
+.dk-stage__name { margin: 0; font-family: var(--font-display); font-weight: 300; font-size: 28px; letter-spacing: -0.03em; line-height: 1.1; }
+.dk-stage__goal { font-weight: 500; font-size: 15px; }
+.dk-stage__how { margin-top: auto; font-size: 14px; line-height: 1.55; color: var(--ink-muted); }
+.dk-stage--final { border-color: var(--orange); }
+
+/* ---------- Pílulas e selo do robô ---------- */
+.dk-chip { display: inline-flex; align-items: center; padding: 10px 18px; border-radius: var(--radius-pill); border: 1px solid var(--line); font-size: 15px; color: var(--ink); }
+.dk-chip--active { border-color: var(--orange-light); color: var(--orange-text); }
+.dk-bot-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: var(--radius-pill); background: var(--surface-glass); border: 1px solid var(--line); font-size: 13px; font-weight: 500; color: var(--ink); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.dk-bot-badge__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); animation: dk-ping 2.4s ease-in-out infinite; }
+
+/* ---------- Entrada (reveal) ---------- */
+.dk-reveal { animation: dk-rise .75s cubic-bezier(.2,.8,.2,1) both; }
+.dk-delay-1 { animation-delay: .08s; } .dk-delay-2 { animation-delay: .16s; } .dk-delay-3 { animation-delay: .24s; } .dk-delay-4 { animation-delay: .32s; }
+
+@keyframes dk-border { to { --dk-a: 360deg; } }
+@keyframes dk-light-a { to { transform: translate(60%, 45%) rotate(7deg) scale(.82); } }
+@keyframes dk-light-b { to { transform: translate(-65%, -48%) rotate(-6deg) scale(1.1); } }
+@keyframes dk-light-c { to { transform: translate(-90%, 30%) scale(1.18); } }
+@keyframes dk-travel { 0% { left: 0%; opacity: 0; } 6%, 94% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+@keyframes dk-trail { from { width: 0%; } to { width: 100%; } }
+@keyframes dk-ping { 0%, 100% { box-shadow: 0 0 0 0 rgba(245,102,13,.5); } 50% { box-shadow: 0 0 0 6px rgba(245,102,13,0); } }
+@keyframes dk-rise { from { opacity: 0; transform: translateY(24px) scale(.985); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 860px), (hover: none) { .dk-light { animation: none; filter: blur(52px); } .dk-light--c { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .dk-btn::before, .dk-light, .dk-card--featured::before, .dk-track__trail, .dk-track__dot, .dk-bot-badge__dot, .dk-reveal { animation: none; }
+  .dk-btn, .dk-card, .dk-stage { transition: none; }
+}

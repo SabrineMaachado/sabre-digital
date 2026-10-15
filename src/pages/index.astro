@@ -1,0 +1,245 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, fill, whatsappHref, whatsappAttrs } from '../config/site';
+
+const wa = {
+  motor: whatsappHref('Olá, Dakar! Quero conhecer o motor de clientes.'),
+  presenca: whatsappHref('Olá, Dakar! Tenho interesse na oferta Presença.'),
+  captacao: whatsappHref('Olá, Dakar! Tenho interesse na oferta Captação.'),
+  operacao: whatsappHref('Olá, Dakar! Tenho interesse na Operação completa.'),
+  conversa: whatsappHref('Olá, Dakar! Quero conversar sobre a minha empresa.'),
+};
+
+const presenca = [
+  ['Identidade visual', 'Logo, cores e tipografia que deixam a marca reconhecível.'],
+  ['Site', 'Uma página clara, rápida e pronta para receber contatos.'],
+  ['Redes sociais', 'Perfis organizados e com a cara da marca.'],
+  ['Perfil no Google', 'Aparecer do jeito certo para quem procura você.'],
+  ['WhatsApp Business', 'Catálogo, horários e mensagens prontas.'],
+  ['E-mail profissional', 'Um endereço com o nome da sua empresa.'],
+  ['Materiais de apresentação', 'Apresentação e materiais para enviar a clientes.'],
+];
+
+const stages = [
+  ['01', 'Atrair', 'Trazer a pessoa certa', 'Anúncios no Meta e no Google, conteúdo e páginas de captura.'],
+  ['02', 'Atender', 'Responder na hora, a qualquer horário', 'Robô de IA no WhatsApp, que avisa que é automático e passa para uma pessoa quando precisa.'],
+  ['03', 'Qualificar', 'Separar quem tem perfil de quem só está curioso', 'Perguntas-chave na conversa e registro de cada contato numa planilha de clientes.'],
+  ['04', 'Pagamento', 'Garantir o compromisso', 'Link de pagamento, Pix ou sinal enviado na própria conversa.'],
+  ['05', 'Agendar', 'Colocar o cliente na agenda', 'Horário marcado direto na agenda, com lembretes.'],
+];
+
+const report = [
+  ['Atrair', 100],
+  ['Atender', 86],
+  ['Qualificar', 52],
+  ['Pagamento', 30],
+  ['Agendar', 27],
+];
+
+const principles = [
+  ['Resultado que dá para medir', 'Cada etapa tem número, e você vê todos eles.'],
+  ['Transparência', 'Sobre o que está incluso e sobre quando é um robô falando.'],
+  ['Cuidado com dados', 'Tudo segue a LGPD, do formulário à planilha de clientes.'],
+  ['Testado em casa', 'Toda automação roda primeiro na própria Dakar.'],
+];
+---
+<Base>
+  <section id="topo" class="sec dark hero" data-theme="dark">
+    <div class="gl gl-a"></div>
+    <div class="gl gl-b"></div>
+    <div class="gl gl-c"></div>
+    <div class="grain"></div>
+    <div class="wrap hero-grid">
+      <div class="stack g-28">
+        <span class="eb rise">Design · Marketing · Tecnologia</span>
+        <h1 class="h1 rise d1">Mais clientes <span class="acc">na sua agenda.</span></h1>
+        <p class="lead rise d2">A Dakar monta toda a estrutura digital que transforma quem ainda não conhece sua empresa em cliente atendido, pago e na agenda. De forma organizada e, em grande parte, automatizada.</p>
+        <div class="ctas rise d3">
+          <a href={wa.motor} class="btn btn-p" {...whatsappAttrs}>Quero o motor de clientes</a>
+          <a href="#metodo" class="btn btn-g">Ver o método</a>
+        </div>
+      </div>
+      <div class="journey glass rise d4" role="group" aria-label="Exemplo do caminho de um contato">
+        <div class="row-between row-between--wrap">
+          <span class="eb">Um contato, do anúncio à agenda</span>
+          <span class="mono faint">Exemplo</span>
+        </div>
+        <div class="steps-wrap">
+          <span class="vdot" aria-hidden="true"></span>
+          <ol class="steps">
+            <li><span class="st-t">Viu o anúncio no Instagram</span><span class="st-k">Atrair</span></li>
+            <li><span class="st-t">Recebeu resposta na hora, às 23h</span><span class="st-k">Atender</span></li>
+            <li><span class="st-t">Respondeu às perguntas-chave</span><span class="st-k">Qualificar</span></li>
+            <li><span class="st-t">Pagou o sinal via Pix na conversa</span><span class="st-k">Pagamento</span></li>
+            <li class="st-final"><span class="st-t">Quinta, 14h, com lembrete</span><span class="st-k">Agendar</span></li>
+          </ol>
+        </div>
+        <span class="badge"><span class="ping" aria-hidden="true"></span>Você está falando com o assistente automático da Dakar</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec light" data-theme="light">
+    <div class="wrap stack g-40">
+      <span class="eb">A promessa</span>
+      <div class="strike" role="group" aria-label="O que não é a proposta">
+        <span>Só posts</span>
+        <span>Só anúncios</span>
+        <span>Só contatos no WhatsApp</span>
+      </div>
+      <h2 class="h2 mw-980">Entregamos o caminho completo <span class="acc">até o cliente chegar.</span></h2>
+      <div class="two mt-16">
+        <p class="lead lead--strong">Enquanto a Dakar cuida da operação, você foca em atender bem.</p>
+        <p class="lead">Para empresas de qualquer segmento que querem mais clientes com menos trabalho manual. Cada caso é avaliado para ajustar a estrutura ao seu negócio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sandbg" data-theme="light">
+    <div class="wrap stack g-48">
+      <div class="stack g-16">
+        <span class="eb">A base</span>
+        <h2 class="h2 mw-900">Presença: o que faz sua empresa <span class="acc">existir e passar confiança.</span></h2>
+      </div>
+      <div class="cards4">
+        {presenca.map(([title, text]) => (
+          <div class="pcard"><strong>{title}</strong><span>{text}</span></div>
+        ))}
+        <div class="pcard pcard-dark" data-theme="dark">
+          <div class="gl gl-card"></div>
+          <strong>A base sustenta o motor</strong>
+          <span>Com a presença pronta, o caminho até o cliente começa a girar.</span>
+          <a href="#metodo" class="pcard-link">Ver o motor de clientes</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo" class="sec dark" data-theme="dark">
+    <div class="gl gl-a o-32"></div>
+    <div class="gl gl-b o-28"></div>
+    <div class="grain"></div>
+    <div class="wrap stack g-48">
+      <div class="sec-head">
+        <div class="stack g-16">
+          <span class="eb">O motor de clientes</span>
+          <h2 class="h2">Cinco etapas, <span class="acc">um caminho só.</span></h2>
+        </div>
+        <p class="lead lead--side">Cada etapa entrega a pessoa pronta para a próxima, sem você precisar empurrar ninguém.</p>
+      </div>
+      <div class="stack g-14">
+        <div class="track" aria-hidden="true">
+          <span class="trail"></span>
+          {[0, 25, 50, 75, 100].map((left) => <span class="node" style={`left: ${left}%`}></span>)}
+          <span class="hdot"></span>
+        </div>
+        <ol class="stages">
+          {stages.map(([num, name, goal, how], i) => (
+            <li class:list={['stage', { 'stage-final': i === stages.length - 1 }]}>
+              <span class="num">{num}</span>
+              <h3 class="h3">{name}</h3>
+              <span class="goal">{goal}</span>
+              <span class="how">{how}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark sec--follow" data-theme="dark">
+    <div class="wrap two two--center">
+      <div class="stack g-20">
+        <span class="eb">Acompanhamento</span>
+        <h2 class="h2">Todo mês, os números <span class="acc">de cada etapa.</span></h2>
+        <p class="lead">Você recebe um relatório mensal com o que aconteceu em cada etapa do caminho. Onde estiver perdendo gente, a gente ajusta.</p>
+      </div>
+      <div class="report glass" role="group" aria-label="Exemplo de relatório mensal">
+        <div class="row-between">
+          <span class="eb">Relatório · [mês]</span>
+          <span class="mono faint">Exemplo</span>
+        </div>
+        {report.map(([label, width]) => (
+          <div class="rrow"><span>{label}</span><span class="bar"><i style={`width: ${width}%`}></i></span><span class="rval">[nº]</span></div>
+        ))}
+        <span class="flag"><span class="ping" aria-hidden="true"></span>Ajuste do mês: perguntas da etapa Qualificar</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="ofertas" class="sec light" data-theme="light">
+    <div class="gl gl-offers"></div>
+    <div class="wrap stack g-48">
+      <div class="sec-head">
+        <div class="stack g-16">
+          <span class="eb">Como começar</span>
+          <h2 class="h2">Três formas <span class="acc">de começar.</span></h2>
+        </div>
+        <p class="lead lead--side">Você sabe exatamente o que está incluso antes de começar. Cada caso é avaliado para ajustar a estrutura.</p>
+      </div>
+      <div class="offers">
+        <article class="offer">
+          <span class="mono muted">A base</span>
+          <h3>Presença</h3>
+          <p>Para a empresa existir no digital e passar confiança.</p>
+          <ul><li>Identidade visual e site</li><li>Redes sociais e perfil no Google</li><li>WhatsApp Business e e-mail profissional</li><li>Materiais de apresentação</li></ul>
+          <div class="offer-foot"><span class="mono muted">Investimento: {fill(site.prices.presenca, 'VALOR')}</span><a href={wa.presenca} class="btn btn-g btn-sm" {...whatsappAttrs}>Quero a Presença</a></div>
+        </article>
+        <article class="offer">
+          <span class="mono muted">Presença + Atrair</span>
+          <h3>Captação</h3>
+          <p>Para ser encontrado pela pessoa certa.</p>
+          <ul><li>Tudo da Presença</li><li>Anúncios no Meta e no Google</li><li>Conteúdo</li><li>Páginas de captura</li></ul>
+          <div class="offer-foot"><span class="mono muted">Investimento: {fill(site.prices.captacao, 'VALOR')}</span><a href={wa.captacao} class="btn btn-g btn-sm" {...whatsappAttrs}>Quero a Captação</a></div>
+        </article>
+        <article class="offer offer-feat" data-theme="dark">
+          <div class="gl gl-feat"></div>
+          <div class="row-between"><span class="mono mono-feat">As 5 etapas</span><span class="tag">Ponta a ponta</span></div>
+          <h3>Operação completa</h3>
+          <p>O motor inteiro funcionando, do primeiro contato ao horário marcado.</p>
+          <ul><li>Atrair e atender, inclusive fora do horário</li><li>Qualificar e registrar cada contato</li><li>Receber o sinal na conversa</li><li>Agendar com lembretes</li><li>Relatório mensal e ajustes</li></ul>
+          <div class="offer-foot"><span class="mono mono-price">Investimento: {fill(site.prices.operacao, 'VALOR')}</span><a href={wa.operacao} class="btn btn-p" {...whatsappAttrs}>Quero a Operação completa</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="principios" class="sec sandbg" data-theme="light">
+    <div class="wrap stack g-40">
+      <div class="sec-head sec-head--tight">
+        <div class="stack g-16">
+          <span class="eb">Princípios</span>
+          <h2 class="h2">O que não <span class="acc">negociamos.</span></h2>
+        </div>
+        <span class="badge"><span class="ping" aria-hidden="true"></span>Sempre avisamos quando é um robô falando</span>
+      </div>
+      <div class="princ">
+        {principles.map(([title, text]) => (
+          <div class="pr"><strong>{title}</strong><span>{text}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="sec dark" data-theme="dark">
+    <div class="wrap">
+      <div class="final">
+        <div class="gl gl-a o-45"></div>
+        <div class="gl gl-b o-38"></div>
+        <div class="grain"></div>
+        <span class="eb">Vamos começar</span>
+        <h2 class="h2 mw-860">Vamos montar o caminho até o seu <span class="acc">próximo cliente?</span></h2>
+        <p class="lead lead--center">Conte como sua empresa funciona hoje. A gente avalia o seu caso e mostra a estrutura que faz sentido.</p>
+        <div class="ctas ctas--center">
+          <a href={wa.motor} class="btn btn-p" {...whatsappAttrs}>Quero o motor de clientes</a>
+          <a href={wa.conversa} class="btn btn-g" {...whatsappAttrs}>Falar no WhatsApp</a>
+        </div>
+        <span class="mono faint contact-line">
+          WhatsApp {site.whatsapp ? <a href={wa.conversa} {...whatsappAttrs}>{fill(site.whatsappDisplay, 'NÚMERO')}</a> : '[NÚMERO]'}
+          {' · '}
+          {site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : '[E-MAIL]'}
+        </span>
+      </div>
+    </div>
+  </section>
+</Base>

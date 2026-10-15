@@ -1,0 +1,26 @@
+---
+import { site, fill, hasTracking } from '../config/site';
+
+const base = Astro.url.pathname === '/' ? '' : '/';
+const year = new Date().getFullYear();
+---
+<footer class="foot dark" data-theme="dark">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a href={`${base}#topo`} class="wm wm--foot" aria-label="Dakar Digital, voltar ao início"><span>Dakar</span></a>
+      <span class="eb">Digital</span>
+    </div>
+    <nav class="foot-nav" aria-label="Rodapé">
+      <a href={`${base}#metodo`}>Método</a>
+      <a href={`${base}#ofertas`}>Ofertas</a>
+      <a href={`${base}#principios`}>Princípios</a>
+      <a href={`${base}#contato`}>Contato</a>
+      <a href="/politica-de-privacidade/">Política de privacidade</a>
+      {hasTracking && <button type="button" data-consent-open>Preferências de cookies</button>}
+    </nav>
+    <div>
+      <small>© {year} {site.name} · CNPJ {fill(site.cnpj, 'CNPJ')}</small>
+      <small>Seus dados são tratados conforme a LGPD.</small>
+    </div>
+  </div>
+</footer>

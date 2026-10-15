@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, fill } from '../config/site';
+
+const { cloudflareToken, metaPixelId } = site.analytics;
+const email = fill(site.email, 'E-MAIL');
+---
+<Base
+  title="Política de privacidade — Dakar Digital"
+  description="Como a Dakar Digital trata os dados pessoais de quem visita o site e entra em contato, conforme a LGPD."
+>
+  <section class="sec dark page-hero" data-theme="dark">
+    <div class="gl gl-a o-32"></div>
+    <div class="gl gl-b o-28"></div>
+    <div class="grain"></div>
+    <div class="wrap stack g-20">
+      <span class="eb">LGPD</span>
+      <h1 class="h1">Política de <span class="acc">privacidade.</span></h1>
+      <p class="lead">Como tratamos os seus dados quando você visita este site ou fala com a gente. Última atualização: outubro de 2026.</p>
+    </div>
+  </section>
+
+  <section class="sec light" data-theme="light">
+    <div class="wrap doc">
+      <h2>Quem é responsável pelos dados</h2>
+      <p>{site.name}, CNPJ {fill(site.cnpj, 'CNPJ')}, é a controladora dos dados pessoais tratados neste site. Para qualquer assunto sobre privacidade, fale pelo e-mail {site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : email}.</p>
+
+      <h2>Quais dados tratamos</h2>
+      <ul>
+        <li><strong>Quando você entra em contato</strong> (WhatsApp ou e-mail): nome, telefone, e-mail e o que você escrever na conversa sobre a sua empresa.</li>
+        {cloudflareToken && <li><strong>Medição de visitas:</strong> usamos o Cloudflare Web Analytics, que conta visitas e páginas vistas sem cookies e sem identificar você.</li>}
+        {metaPixelId && <li><strong>Anúncios:</strong> se você aceitar no aviso de cookies, o Pixel da Meta registra visitas para medirmos nossos anúncios no Facebook e no Instagram.</li>}
+        {!cloudflareToken && !metaPixelId && <li><strong>Navegação:</strong> este site não usa cookies de rastreamento nem ferramentas de medição de visitas.</li>}
+      </ul>
+
+      <h2>Para que usamos</h2>
+      <ul>
+        <li>Responder ao seu contato e entender o seu caso.</li>
+        <li>Enviar proposta, contrato e informações do serviço que você pediu.</li>
+        {(cloudflareToken || metaPixelId) && <li>Entender como o site é usado e melhorar nossa comunicação.</li>}
+      </ul>
+      <p>Não vendemos dados pessoais e não enviamos mensagens que você não pediu.</p>
+
+      <h2>Base legal</h2>
+      <p>Tratamos os dados para atender ao seu pedido de contato e para preparar ou cumprir um contrato (art. 7º, V, da LGPD), por nosso legítimo interesse em melhorar o site de forma que respeite seus direitos (art. 7º, IX) e, no caso de cookies de anúncios, com o seu consentimento (art. 7º, I), que pode ser retirado a qualquer momento.</p>
+
+      <h2>Com quem compartilhamos</h2>
+      <p>Só com serviços necessários para funcionar: a Meta (WhatsApp{metaPixelId && ' e Pixel'}), a Cloudflare (hospedagem{cloudflareToken && ' e medição de visitas'}) e o provedor do nosso e-mail. Alguns desses serviços podem armazenar dados fora do Brasil, com as garantias previstas na LGPD.</p>
+
+      <h2>Por quanto tempo guardamos</h2>
+      <p>Conversas de quem não virou cliente ficam guardadas por até 12 meses. Dados de clientes ficam pelo tempo do contrato e pelo prazo exigido por lei (por exemplo, documentos fiscais).</p>
+
+      <h2>Seus direitos</h2>
+      <p>Você pode pedir, a qualquer momento: confirmação de que tratamos seus dados, acesso, correção, anonimização ou exclusão, portabilidade, informação sobre compartilhamento e revisão do consentimento. Basta escrever para {site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : email}. Você também pode procurar a Autoridade Nacional de Proteção de Dados (ANPD).</p>
+
+      <h2>Segurança</h2>
+      <p>Usamos verificação em duas etapas nas nossas contas, acesso restrito às informações de clientes e coletamos só o necessário.</p>
+
+      <h2>Robôs e automação</h2>
+      <p>Quando um atendimento for feito por assistente automático, isso é avisado no início da conversa, e você pode pedir para falar com uma pessoa.</p>
+
+      <h2>Mudanças nesta política</h2>
+      <p>Se esta política mudar, a data no topo da página é atualizada.</p>
+    </div>
+  </section>
+</Base>

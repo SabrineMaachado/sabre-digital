@@ -1,0 +1,57 @@
+---
+import { whatsappHref, whatsappAttrs } from '../config/site';
+
+// Na home os links são âncoras; nas outras páginas voltam para a home.
+const base = Astro.url.pathname === '/' ? '' : '/';
+const links = [
+  { href: `${base}#metodo`, label: 'Método' },
+  { href: `${base}#ofertas`, label: 'Ofertas' },
+  { href: `${base}#principios`, label: 'Princípios' },
+  { href: `${base}#contato`, label: 'Contato' },
+];
+---
+<header class="hdr" data-theme="dark">
+  <div class="hdr-in">
+    <a href={`${base}#topo`} class="wm wm--hdr" aria-label="Dakar Digital, voltar ao início"><span>Dakar</span></a>
+    <nav class="nav" aria-label="Principal">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+    <a href={`${base}#contato`} class="btn btn-g btn-sm hdr-cta">Falar com a Dakar</a>
+    <button class="menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-panel">
+      <svg class="ic-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16"></path><path d="M4 16h16"></path></svg>
+      <svg class="ic-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+    </button>
+  </div>
+  <div id="menu-panel" class="menu-panel" hidden>
+    <nav aria-label="Menu do celular">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+    <a href={whatsappHref('Olá, Dakar! Quero conhecer o motor de clientes.')} class="btn btn-p" {...whatsappAttrs}>Quero o motor de clientes</a>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.menu');
+  const panel = document.getElementById('menu-panel');
+
+  if (button && panel) {
+    const setOpen = (open: boolean) => {
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      panel.hidden = !open;
+    };
+
+    button.addEventListener('click', () => setOpen(panel.hidden));
+    panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.hidden) {
+        setOpen(false);
+        button.focus();
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.hidden && !(e.target as Element).closest('.hdr')) setOpen(false);
+    });
+    matchMedia('(min-width: 861px)').addEventListener('change', (e) => e.matches && setOpen(false));
+  }
+</script>
