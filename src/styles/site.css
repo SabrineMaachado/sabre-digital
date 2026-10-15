@@ -210,6 +210,11 @@ a:hover { color: var(--orange-pale); }
 .consent p { margin: 0; flex: 1 1 320px; font-size: 15px; line-height: 1.55; color: var(--ink-muted); }
 .consent-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
 
+/* ---------- WhatsApp flutuante ---------- */
+.wa-float { position: fixed; z-index: 40; right: calc(var(--space-5) + env(safe-area-inset-right, 0px)); bottom: calc(var(--space-5) + env(safe-area-inset-bottom, 0px)); width: 60px; min-height: 60px; height: 60px; padding: 0; border-radius: 50%; animation: lpRise .75s cubic-bezier(.2,.8,.2,1) .6s backwards; }
+.wa-float svg { display: block; }
+.consent:not([hidden]) ~ .wa-float { bottom: calc(var(--space-5) + 132px + env(safe-area-inset-bottom, 0px)); }
+
 /* ---------- Responsivo ---------- */
 @media (max-width: 1080px) {
   .stages { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -234,8 +239,9 @@ a:hover { color: var(--orange-pale); }
   .ctas .btn { width: 100%; }
   .rrow { grid-template-columns: 90px minmax(0, 1fr) 48px; gap: 10px; }
   .hdr-in { padding-left: 22px; }
+  .wa-float { right: calc(var(--space-4) + env(safe-area-inset-right, 0px)); bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px)); width: 56px; height: 56px; min-height: 56px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .gl, .btn::before, .ping, .vdot, .trail, .hdot, .rise, .menu-panel { animation: none; }
+  .gl, .btn::before, .ping, .vdot, .trail, .hdot, .rise, .menu-panel, .wa-float { animation: none; }
   .btn, .pcard, .stage, .offer { transition: none; }
 }
