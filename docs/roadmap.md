@@ -38,6 +38,8 @@ Objetivo: a agência ter nome, endereço e uma frase clara do que faz.
 
 ## Fase 1 — Presença mínima (semanas 2–4)
 
+Checklist completo em [presenca.md](presenca.md).
+
 Objetivo: quem procurar a agência encontra algo profissional.
 
 - [ ] **Site** (código neste repositório): uma página só no começo — promessa, serviços, como funciona, cases, contato via WhatsApp
