@@ -9,8 +9,16 @@ import '@fontsource/ibm-plex-mono/latin-300.css';
 import '@fontsource/ibm-plex-mono/latin-400.css';
 import '../../design-system/tokens.css';
 import '../styles/site.css';
+// Todas as fontes aparecem já no topo da página: pré-carregar evita que o layout "pule" quando elas chegam.
 import sora200 from '@fontsource/sora/files/sora-latin-200-normal.woff2?url';
+import sora300 from '@fontsource/sora/files/sora-latin-300-normal.woff2?url';
 import manrope400 from '@fontsource/manrope/files/manrope-latin-400-normal.woff2?url';
+import manrope500 from '@fontsource/manrope/files/manrope-latin-500-normal.woff2?url';
+import manrope600 from '@fontsource/manrope/files/manrope-latin-600-normal.woff2?url';
+import manrope700 from '@fontsource/manrope/files/manrope-latin-700-normal.woff2?url';
+import mono300 from '@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-300-normal.woff2?url';
+import mono400 from '@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2?url';
+const preloadFonts = [sora200, sora300, manrope400, manrope500, manrope600, manrope700, mono300, mono400];
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -68,10 +76,10 @@ const jsonLd = {
   <meta property="og:image:alt" content="Dakar Digital — Mais clientes na sua agenda.">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="preload" href={sora200} as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href={manrope400} as="font" type="font/woff2" crossorigin>
+  {preloadFonts.map((href) => <link rel="preload" href={href} as="font" type="font/woff2" crossorigin />)}
 
   {isHome && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  <slot name="head" />
 </head>
 <body>
   <div class="lp">

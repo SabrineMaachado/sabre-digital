@@ -17,10 +17,9 @@
 .dk-btn { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 56px; padding: 0 28px; border: 0; border-radius: var(--radius-pill); font-family: var(--font-body); font-weight: 700; font-size: 16px; line-height: 1.2; text-decoration: none; cursor: pointer; transition: transform .3s, box-shadow .3s, background .3s; }
 .dk-btn:hover { transform: translateY(-2px); }
 .dk-btn:focus-visible { outline: 2px solid var(--orange-light); outline-offset: 3px; }
-/* Luz que percorre a borda: presente nos dois botões. */
+/* Luz que percorre a borda: só nos botões de contato (modificador dk-btn--light). */
 @property --dk-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
-.dk-btn::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 2px; background: conic-gradient(from var(--dk-a), transparent 0deg, transparent 240deg, rgba(255,178,122,0.6) 300deg, #FFF1E6 340deg, transparent 360deg); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: dk-border 3.2s linear infinite; pointer-events: none; }
-.dk-btn:hover::before { animation-duration: 1.8s; }
+.dk-btn--light::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 2px; background: conic-gradient(from var(--dk-a), transparent 0deg, transparent 240deg, rgba(255,178,122,0.6) 300deg, #FFF1E6 340deg, transparent 360deg); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: dk-border 6s linear infinite; pointer-events: none; }
 .dk-btn--primary { background: linear-gradient(145deg, #FF7A2A, var(--orange) 55%, var(--orange-deep)); color: var(--on-orange); font-size: 19px; box-shadow: var(--shadow-glow), inset 0 1px 0 rgba(255,255,255,0.3); }
 .dk-btn--primary:hover { background: linear-gradient(145deg, #FF8A3D, #FF7027 55%, var(--orange)); }
 .dk-btn--ghost { background: transparent; color: var(--ink); border: 1px solid rgba(245,102,13,0.55); font-weight: 600; font-size: 19px; }
@@ -75,6 +74,7 @@
 .dk-reveal { animation: dk-rise .75s cubic-bezier(.2,.8,.2,1) both; }
 .dk-delay-1 { animation-delay: .08s; } .dk-delay-2 { animation-delay: .16s; } .dk-delay-3 { animation-delay: .24s; } .dk-delay-4 { animation-delay: .32s; }
 
+/* Volta contínua e lenta, 6s. */
 @keyframes dk-border { to { --dk-a: 360deg; } }
 @keyframes dk-light-a { to { transform: translate(60%, 45%) rotate(7deg) scale(.82); } }
 @keyframes dk-light-b { to { transform: translate(-65%, -48%) rotate(-6deg) scale(1.1); } }
@@ -86,6 +86,6 @@
 
 @media (max-width: 860px), (hover: none) { .dk-light { animation: none; filter: blur(52px); } .dk-light--c { display: none; } }
 @media (prefers-reduced-motion: reduce) {
-  .dk-btn::before, .dk-light, .dk-card--featured::before, .dk-track__trail, .dk-track__dot, .dk-bot-badge__dot, .dk-reveal { animation: none; }
+  .dk-btn--light::before, .dk-light, .dk-card--featured::before, .dk-track__trail, .dk-track__dot, .dk-bot-badge__dot, .dk-reveal { animation: none; }
   .dk-btn, .dk-card, .dk-stage { transition: none; }
 }

@@ -6,20 +6,14 @@ export const site = {
   url: 'https://dakardigital.com.br',
   title: 'Dakar Digital — Mais clientes na sua agenda',
   description:
-    'A Dakar Digital monta toda a estrutura digital que transforma quem ainda não conhece sua empresa em cliente atendido, pago e na agenda.',
+    'A Dakar monta e cuida do caminho que leva alguém do primeiro clique até o horário marcado. Você só precisa atender.',
 
   // WhatsApp só com números: DDI + DDD + número. Ex.: 5511999999999
-  whatsapp: '',
+  whatsapp: '5511981033872',
   // Como o número aparece escrito na página. Ex.: (11) 99999-9999
-  whatsappDisplay: '',
+  whatsappDisplay: '(11) 98103-3872',
   email: '',
   cnpj: '',
-
-  prices: {
-    presenca: '',
-    captacao: '',
-    operacao: '',
-  },
 
   analytics: {
     // Cloudflare Web Analytics: não usa cookies, não exige aviso.

@@ -67,7 +67,7 @@ Lento, contínuo e discreto. Nada pisca rápido.
 | Movimento | Onde | Tempo |
 | --- | --- | --- |
 | Luzes que flutuam | Fundos (GlassLight) | 18s, 23s e 20s, ida e volta |
-| Luz na borda | Botões principal e secundário | 3.2s por volta (1.8s no hover) |
+| Luz na borda | Só nos botões de contato ("Falar com especialista", "Falar com a Dakar") | volta contínua e lenta, 6s |
 | Trilha do motor | Ponto percorrendo as 5 etapas | 7s |
 | Entrada | Blocos ao aparecer | 0.75s, atraso de 0.08s entre irmãos |
 

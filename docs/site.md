@@ -6,7 +6,7 @@ Site em **Astro** (gera HTML e CSS estáticos, leves) hospedado no **Cloudflare 
 
 | Caminho | O que é |
 |---|---|
-| `src/config/site.ts` | **Dados para preencher**: WhatsApp, e-mail, CNPJ, valores das ofertas, domínio, medição |
+| `src/config/site.ts` | **Dados para preencher**: WhatsApp, e-mail, CNPJ, domínio, medição |
 | `src/pages/index.astro` | A landing (textos e seções) |
 | `src/pages/politica-de-privacidade.astro` | Política de privacidade (LGPD) |
 | `src/styles/site.css` | Estilos da landing, todos usando as variáveis do design system |
@@ -15,11 +15,11 @@ Site em **Astro** (gera HTML e CSS estáticos, leves) hospedado no **Cloudflare 
 
 ## Preencher os dados
 
-Abra `src/config/site.ts` e preencha. Enquanto um campo estiver vazio, a página mostra o texto entre colchetes do layout aprovado (`[NÚMERO]`, `[VALOR]`…) e os botões de WhatsApp levam para a seção de contato.
+Abra `src/config/site.ts` e preencha. Enquanto um campo estiver vazio, a página mostra o texto entre colchetes do layout aprovado (ex.: `[CNPJ]`). Sem número de WhatsApp, os botões levam para a seção de contato.
 
 - `whatsapp`: só números, com 55 e DDD. Ex.: `5511999999999`
 - `whatsappDisplay`: como aparece escrito. Ex.: `(11) 99999-9999`
-- `email`, `cnpj`, `prices`
+- `email`, `cnpj`
 - `url`: o domínio definitivo, quando for registrado
 
 ## Medição e cookies
@@ -57,6 +57,9 @@ npm run build    # gera a versão final em dist/
 
 ## Qualidade verificada
 
-- Visual igual ao `index.html` aprovado (comparação pixel a pixel no computador e no celular).
-- Lighthouse: celular 98 de desempenho, computador 100; acessibilidade, boas práticas e SEO 100 nos dois.
+- Visual igual ao protótipo aprovado (`index.html` de 16/10/2026) na comparação pixel a pixel no computador e no celular, exceto o logo do menu (aguardando o SVG definitivo) e o ícone do WhatsApp (glifo oficial).
+- Lighthouse: celular 99 de desempenho, computador 100; acessibilidade, boas práticas e SEO 100 nos dois.
+- Luz na borda só em "Falar com especialista", "Falar com a Dakar" e no card Operação completa.
+- Barras do relatório começam a crescer quando a seção aparece na tela.
+- Perguntas frequentes com `<details>`, acessíveis pelo teclado, e marcação `FAQPage` para o Google.
 - Luzes desfocadas paradas no celular e em telas de toque; tudo parado com "reduzir movimento".

@@ -6,7 +6,7 @@ const base = Astro.url.pathname === '/' ? '' : '/';
 const links = [
   { href: `${base}#metodo`, label: 'Método' },
   { href: `${base}#ofertas`, label: 'Ofertas' },
-  { href: `${base}#principios`, label: 'Princípios' },
+  { href: `${base}#duvidas`, label: 'Dúvidas' },
   { href: `${base}#contato`, label: 'Contato' },
 ];
 ---
@@ -16,7 +16,7 @@ const links = [
     <nav class="nav" aria-label="Principal">
       {links.map((l) => <a href={l.href}>{l.label}</a>)}
     </nav>
-    <a href={`${base}#contato`} class="btn btn-g btn-sm hdr-cta">Falar com a Dakar</a>
+    <a href={`${base}#contato`} class="btn btn-g btn-sm btn-light hdr-cta">Falar com a Dakar</a>
     <button class="menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-panel">
       <svg class="ic-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16"></path><path d="M4 16h16"></path></svg>
       <svg class="ic-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
@@ -26,7 +26,7 @@ const links = [
     <nav aria-label="Menu do celular">
       {links.map((l) => <a href={l.href}>{l.label}</a>)}
     </nav>
-    <a href={whatsappHref('Olá, Dakar! Quero conhecer o motor de clientes.')} class="btn btn-p" {...whatsappAttrs}>Quero o motor de clientes</a>
+    <a href={whatsappHref('Olá, Dakar! Quero falar com um especialista.')} class="btn btn-p btn-light" {...whatsappAttrs}>Falar com especialista</a>
   </div>
 </header>
 
