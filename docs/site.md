@@ -27,16 +27,18 @@ Abra `src/config/site.ts` e preencha. Enquanto um campo estiver vazio, a página
 - **Cloudflare Web Analytics** (`analytics.cloudflareToken`): conta visitas sem cookies, não precisa de aviso.
 - **Pixel da Meta** (`analytics.metaPixelId`): usa cookies. Quando preenchido, o site mostra o aviso de cookies e só carrega o pixel depois do "Aceitar". A política de privacidade se ajusta sozinha ao que estiver ligado.
 
-## Publicar no Cloudflare Pages (uma vez)
+## Publicar no Cloudflare (uma vez)
 
 1. Crie uma conta gratuita em [dash.cloudflare.com](https://dash.cloudflare.com).
-2. **Workers & Pages → Create → Pages → Connect to Git** e autorize o GitHub.
-3. Escolha o repositório deste projeto.
-4. Configuração do build:
-   - Framework preset: **Astro**
+2. **Workers & Pages → Create → Import a repository** e autorize o GitHub.
+3. Escolha o repositório deste projeto e preencha:
+   - Project name: `dakar-digital` (igual ao `name` do `wrangler.jsonc`)
    - Build command: `npm run build`
-   - Build output directory: `dist`
-5. Salvar e publicar. O site fica em `nome-do-projeto.pages.dev`.
+   - Deploy command: `npx wrangler deploy`
+   - Preview command: deixe o que vier preenchido
+4. Clique em **Deploy**. O site fica em `dakar-digital.<sua-conta>.workers.dev`.
+
+A configuração de publicação está em `wrangler.jsonc` (serve a pasta `dist/` e usa a página 404 do site).
 
 Depois disso, cada alteração enviada para a branch `main` publica sozinha. Outras branches geram um link de prévia.
 
