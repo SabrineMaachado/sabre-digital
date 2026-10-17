@@ -2,8 +2,8 @@
 
 export const site = {
   name: 'Dakar Digital',
-  // Domínio definitivo. Trocar quando o domínio for registrado.
-  url: 'https://dakardigital.com.br',
+  // Endereço público atual. Trocar para https://dakardigital.com.br quando o domínio for registrado e ligado.
+  url: 'https://dakar-digital.sa-machado4.workers.dev',
   title: 'Dakar Digital — Mais clientes na sua agenda',
   description:
     'A Dakar monta e cuida do caminho que leva alguém do primeiro clique até o horário marcado. Você só precisa atender.',
