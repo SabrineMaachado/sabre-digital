@@ -1,9 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site, fill } from '../config/site';
+import { site, whatsappHref, whatsappAttrs } from '../config/site';
 
 const { cloudflareToken, metaPixelId } = site.analytics;
-const email = fill(site.email, 'E-MAIL');
+const updated = 'outubro de 2026';
 ---
 <Base
   title="Política de privacidade — Dakar Digital"
@@ -16,51 +16,71 @@ const email = fill(site.email, 'E-MAIL');
     <div class="wrap stack g-20">
       <span class="eb">LGPD</span>
       <h1 class="h1">Política de <span class="acc">privacidade.</span></h1>
-      <p class="lead">Como tratamos os seus dados quando você visita este site ou fala com a gente. Última atualização: outubro de 2026.</p>
+      <p class="lead">Como tratamos os seus dados quando você visita este site ou fala com a gente. Última atualização: {updated}.</p>
     </div>
   </section>
 
   <section class="sec light" data-theme="light">
     <div class="wrap doc">
-      <h2>Quem é responsável pelos dados</h2>
-      <p>{site.name}, CNPJ {fill(site.cnpj, 'CNPJ')}, é a controladora dos dados pessoais tratados neste site. Para qualquer assunto sobre privacidade, fale pelo e-mail {site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : email}.</p>
+      <h2>1. Quem é responsável pelos dados</h2>
+      <p>A {site.name} é a responsável (controladora, nos termos da Lei nº 13.709/2018, a LGPD) pelos dados pessoais tratados neste site e nos nossos canais de atendimento.{site.cnpj && ` CNPJ ${site.cnpj}.`}</p>
+      <p>
+        Para qualquer assunto sobre privacidade, fale com a gente pelo
+        {site.email
+          ? <> e-mail <a href={`mailto:${site.email}`}>{site.email}</a> ou pelo </>
+          : ' '}
+        WhatsApp <a href={whatsappHref('Olá! Tenho uma solicitação sobre meus dados pessoais.')} {...whatsappAttrs}>{site.whatsappDisplay}</a>.
+        Esse é o nosso canal de atendimento ao titular de dados.
+      </p>
 
-      <h2>Quais dados tratamos</h2>
+      <h2>2. Quais dados tratamos</h2>
       <ul>
-        <li><strong>Quando você entra em contato</strong> (WhatsApp ou e-mail): nome, telefone, e-mail e o que você escrever na conversa sobre a sua empresa.</li>
+        <li><strong>Quando você entra em contato</strong> (WhatsApp ou e-mail): nome, telefone, e-mail e o que você contar na conversa sobre a sua empresa.</li>
+        <li><strong>Quando você vira cliente:</strong> dados de cadastro e de cobrança necessários para o contrato e para emitir recibos ou notas.</li>
         {cloudflareToken && <li><strong>Medição de visitas:</strong> usamos o Cloudflare Web Analytics, que conta visitas e páginas vistas sem cookies e sem identificar você.</li>}
         {metaPixelId && <li><strong>Anúncios:</strong> se você aceitar no aviso de cookies, o Pixel da Meta registra visitas para medirmos nossos anúncios no Facebook e no Instagram.</li>}
         {!cloudflareToken && !metaPixelId && <li><strong>Navegação:</strong> este site não usa cookies de rastreamento nem ferramentas de medição de visitas.</li>}
       </ul>
+      <p>Não pedimos dados sensíveis (como saúde, religião ou biometria). Por favor, não os envie nas conversas.</p>
 
-      <h2>Para que usamos</h2>
+      <h2>3. Para que usamos e com qual base legal</h2>
       <ul>
-        <li>Responder ao seu contato e entender o seu caso.</li>
-        <li>Enviar proposta, contrato e informações do serviço que você pediu.</li>
-        {(cloudflareToken || metaPixelId) && <li>Entender como o site é usado e melhorar nossa comunicação.</li>}
+        <li><strong>Responder ao seu contato, entender o seu caso e enviar proposta:</strong> procedimentos preliminares a um contrato, a seu pedido (art. 7º, V).</li>
+        <li><strong>Prestar o serviço contratado e cobrar:</strong> execução de contrato (art. 7º, V).</li>
+        <li><strong>Guardar documentos fiscais e contratuais:</strong> cumprimento de obrigação legal (art. 7º, II) e defesa de direitos (art. 7º, VI).</li>
+        {cloudflareToken && <li><strong>Entender como o site é usado:</strong> legítimo interesse (art. 7º, IX), sem identificar você.</li>}
+        {metaPixelId && <li><strong>Medir anúncios com cookies:</strong> seu consentimento (art. 7º, I), que pode ser retirado a qualquer momento em "Preferências de cookies", no rodapé.</li>}
       </ul>
       <p>Não vendemos dados pessoais e não enviamos mensagens que você não pediu.</p>
 
-      <h2>Base legal</h2>
-      <p>Tratamos os dados para atender ao seu pedido de contato e para preparar ou cumprir um contrato (art. 7º, V, da LGPD), por nosso legítimo interesse em melhorar o site de forma que respeite seus direitos (art. 7º, IX) e, no caso de cookies de anúncios, com o seu consentimento (art. 7º, I), que pode ser retirado a qualquer momento.</p>
+      <h2>4. Atendimento automático</h2>
+      <p>Quando um atendimento for feito por assistente automático, isso é avisado no início da conversa, e você pode pedir para falar com uma pessoa. Se alguma decisão sobre você for tomada só de forma automática, você pode pedir a revisão dela (art. 20).</p>
 
-      <h2>Com quem compartilhamos</h2>
-      <p>Só com serviços necessários para funcionar: a Meta (WhatsApp{metaPixelId && ' e Pixel'}), a Cloudflare (hospedagem{cloudflareToken && ' e medição de visitas'}) e o provedor do nosso e-mail. Alguns desses serviços podem armazenar dados fora do Brasil, com as garantias previstas na LGPD.</p>
+      <h2>5. Com quem compartilhamos</h2>
+      <p>Só com fornecedores necessários para o serviço funcionar, que tratam os dados seguindo as nossas instruções: a Meta (WhatsApp{metaPixelId && ' e Pixel'}), a Cloudflare (hospedagem do site{cloudflareToken && ' e medição de visitas'}{site.email && ' e encaminhamento de e-mail'}) e o Google (e-mail e armazenamento de documentos). Também podemos compartilhar dados quando a lei ou uma autoridade exigir.</p>
+      <p>Alguns desses fornecedores guardam dados fora do Brasil. Nesses casos, a transferência segue as regras do art. 33 da LGPD, com as garantias contratuais oferecidas por eles.</p>
 
-      <h2>Por quanto tempo guardamos</h2>
-      <p>Conversas de quem não virou cliente ficam guardadas por até 12 meses. Dados de clientes ficam pelo tempo do contrato e pelo prazo exigido por lei (por exemplo, documentos fiscais).</p>
+      <h2>6. Dados dos clientes dos nossos clientes</h2>
+      <p>Quando montamos e operamos a estrutura digital de uma empresa (atendimento no WhatsApp, planilha de clientes, agendamento), a empresa contratante é a controladora dos dados dos clientes dela, e a {site.name} atua como operadora, seguindo as instruções e o contrato firmado com ela. Quem quiser exercer direitos sobre esses dados deve procurar primeiro a empresa com quem conversou.</p>
 
-      <h2>Seus direitos</h2>
-      <p>Você pode pedir, a qualquer momento: confirmação de que tratamos seus dados, acesso, correção, anonimização ou exclusão, portabilidade, informação sobre compartilhamento e revisão do consentimento. Basta escrever para {site.email ? <a href={`mailto:${site.email}`}>{site.email}</a> : email}. Você também pode procurar a Autoridade Nacional de Proteção de Dados (ANPD).</p>
+      <h2>7. Por quanto tempo guardamos</h2>
+      <ul>
+        <li>Conversas de quem não fechou contrato: até 12 meses depois do último contato.</li>
+        <li>Dados de clientes: durante o contrato e pelos prazos exigidos por lei depois dele (por exemplo, 5 anos para documentos fiscais).</li>
+      </ul>
+      <p>Depois desses prazos, os dados são apagados ou anonimizados.</p>
 
-      <h2>Segurança</h2>
-      <p>Usamos verificação em duas etapas nas nossas contas, acesso restrito às informações de clientes e coletamos só o necessário.</p>
+      <h2>8. Seus direitos</h2>
+      <p>Você pode pedir, a qualquer momento e sem custo: confirmação de que tratamos seus dados, acesso, correção, anonimização, bloqueio ou eliminação de dados desnecessários, portabilidade, informação sobre com quem compartilhamos, informação sobre a possibilidade de não dar consentimento e revisão do consentimento (art. 18). Responderemos em até 15 dias. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
 
-      <h2>Robôs e automação</h2>
-      <p>Quando um atendimento for feito por assistente automático, isso é avisado no início da conversa, e você pode pedir para falar com uma pessoa.</p>
+      <h2>9. Segurança</h2>
+      <p>Usamos verificação em duas etapas nas nossas contas, acesso restrito às informações de clientes e coletamos só o necessário. Se acontecer algum incidente de segurança que possa trazer risco a você, vamos avisar você e a ANPD, como manda a lei.</p>
 
-      <h2>Mudanças nesta política</h2>
-      <p>Se esta política mudar, a data no topo da página é atualizada.</p>
+      <h2>10. Crianças e adolescentes</h2>
+      <p>Nossos serviços são para empresas e não são direcionados a menores de 18 anos.</p>
+
+      <h2>11. Mudanças nesta política</h2>
+      <p>Se esta política mudar, a data no topo da página é atualizada. Mudanças importantes serão avisadas aos clientes ativos.</p>
     </div>
   </section>
 </Base>

@@ -1,5 +1,5 @@
 ---
-import { site, fill, hasTracking } from '../config/site';
+import { site, hasTracking } from '../config/site';
 
 const base = Astro.url.pathname === '/' ? '' : '/';
 const year = new Date().getFullYear();
@@ -19,7 +19,7 @@ const year = new Date().getFullYear();
       {hasTracking && <button type="button" data-consent-open>Preferências de cookies</button>}
     </nav>
     <div>
-      <small>© {year} {site.name} · CNPJ {fill(site.cnpj, 'CNPJ')}</small>
+      <small>© {year} {site.name}{site.cnpj && ` · CNPJ ${site.cnpj}`}</small>
       <small>Seus dados são tratados conforme a LGPD.</small>
     </div>
   </div>
