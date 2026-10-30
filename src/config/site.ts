@@ -9,9 +9,9 @@ export const site = {
     'A Dakar monta e cuida do caminho que leva alguém do primeiro clique até o horário marcado. Você só precisa atender.',
 
   // WhatsApp só com números: DDI + DDD + número. Ex.: 5511999999999
-  whatsapp: '5511981033872',
+  whatsapp: '5511927480752',
   // Como o número aparece escrito na página. Ex.: (11) 99999-9999
-  whatsappDisplay: '(11) 98103-3872',
+  whatsappDisplay: '(11) 92748-0752',
   email: '',
   cnpj: '',
 

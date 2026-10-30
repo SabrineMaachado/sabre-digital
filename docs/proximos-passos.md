@@ -7,7 +7,7 @@ Site no ar em https://dakardigital.com.br (Presença: site concluído).
 - [ ] **E-mail** `contato@dakardigital.com.br` — encaminhamento do Cloudflare (Email Routing) para o Gmail
 - [ ] **Medição de visitas** — Cloudflare Web Analytics (grátis, sem cookies); colocar o token em `src/config/site.ts`
 - [ ] **Google Search Console** — verificar o domínio e enviar `https://dakardigital.com.br/sitemap.xml`
-- [ ] **WhatsApp Business** no (11) 98103-3872 — foto, descrição, horário, catálogo com os 3 planos, boas-vindas e ausência
+- [ ] **WhatsApp Business** no (11) 92748-0752 — foto, descrição, horário, catálogo com os 3 planos, boas-vindas e ausência
 - [ ] **Perfil da Empresa no Google** — empresa de área de atendimento, endereço oculto
 - [ ] **Instagram e LinkedIn** — @ reservado, bio, destaques
 
