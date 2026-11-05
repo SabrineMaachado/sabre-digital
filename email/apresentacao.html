@@ -12,6 +12,10 @@
 <style>
   body { margin: 0; padding: 0; background: #0E0E10; }
   a { color: #FF9A52; }
+  /* Brilho suave no botão principal: aparece no iPhone e no Apple Mail; nos outros, o botão fica estático. */
+  @keyframes dk-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(245,102,13,0.45); } 50% { box-shadow: 0 0 22px 4px rgba(245,102,13,0.35); } }
+  .btn-p { animation: dk-glow 3.2s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .btn-p { animation: none; } }
   @media (max-width: 620px) {
     .container { width: 100% !important; }
     .px { padding-left: 24px !important; padding-right: 24px !important; }
@@ -40,7 +44,7 @@
         <tr>
           <td style="padding:0; line-height:0;">
             <a href="https://dakardigital.com.br/?utm_source=email&utm_medium=email&utm_campaign=apresentacao" target="_blank">
-              <img src="https://dakardigital.com.br/email/topo.jpg" width="600" alt="Dakar Digital — Digital Marketing &amp; Design Tech AI" style="display:block; width:100%; max-width:600px; height:auto; border:0;">
+              <img src="https://dakardigital.com.br/email/topo-animado.gif" width="600" alt="Dakar Digital — Digital Marketing &amp; Design Tech AI" style="display:block; width:100%; max-width:600px; height:auto; border:0;">
             </a>
           </td>
         </tr>
@@ -92,7 +96,7 @@
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td class="btn-cell" style="padding:0 12px 0 0;">
-                  <a class="btn" href="https://wa.me/5511927480752?text=Ol%C3%A1%2C%20Dakar!%20Recebi%20o%20e-mail%20e%20quero%20falar%20com%20um%20especialista." target="_blank"
+                  <a class="btn btn-p" href="https://wa.me/5511927480752?text=Ol%C3%A1%2C%20Dakar!%20Recebi%20o%20e-mail%20e%20quero%20falar%20com%20um%20especialista." target="_blank"
                      style="display:inline-block; background:#F5660D; color:#FFFFFF; font-family:'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:19px; font-weight:700; line-height:24px; text-decoration:none; padding:16px 24px; border-radius:999px; border:1px solid #FF9A52; white-space:nowrap;">
                     Falar com um especialista
                   </a>
