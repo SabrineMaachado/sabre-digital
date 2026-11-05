@@ -10,4 +10,5 @@ Agência 360 de design, marketing e tecnologia: da presença digital à operaç�
 - [Roadmap](docs/roadmap.md) — fases, entregas e habilidades necessárias
 - [Presença](docs/presenca.md) — checklist detalhado do nível 1: marca, domínio, endereço, Google, identidade, site e redes
 - [Site](docs/site.md) — como preencher os dados, publicar no Cloudflare Pages e ligar o domínio
+- [E-mail de apresentação](email/apresentacao.html) — modelo de e-mail marketing na identidade do site (prévias em `email/`)
 - [Design system](design-system/README.md) — regras da marca, tokens e componentes
