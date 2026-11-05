@@ -1,15 +1,13 @@
 ---
 import { site, hasTracking } from '../config/site';
+import logo from '../assets/logo-dakar-completo.svg?raw';
 
 const base = Astro.url.pathname === '/' ? '' : '/';
 const year = new Date().getFullYear();
 ---
 <footer class="foot dark" data-theme="dark">
   <div class="wrap foot-in">
-    <div class="foot-brand">
-      <a href={`${base}#topo`} class="wm wm--foot" aria-label="Dakar Digital, voltar ao início"><span>Dakar</span></a>
-      <span class="eb">Digital</span>
-    </div>
+    <a href={`${base}#topo`} class="logo logo--foot" aria-label="Dakar Digital, voltar ao início"><Fragment set:html={logo} /></a>
     <nav class="foot-nav" aria-label="Rodapé">
       <a href={`${base}#metodo`}>Método</a>
       <a href={`${base}#ofertas`}>Ofertas</a>

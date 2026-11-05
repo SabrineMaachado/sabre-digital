@@ -44,6 +44,7 @@ const jsonLd = {
   url: site.url,
   description: site.description,
   image: ogImage,
+  logo: new URL('/logo.svg', site.url).href,
   areaServed: 'BR',
   ...(site.email && { email: site.email }),
   ...(site.whatsapp && { telephone: `+${site.whatsapp}` }),

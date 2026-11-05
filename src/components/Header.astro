@@ -1,5 +1,6 @@
 ---
 import { whatsappHref, whatsappAttrs } from '../config/site';
+import logo from '../assets/logo-dakar.svg?raw';
 
 // Na home os links são âncoras; nas outras páginas voltam para a home.
 const base = Astro.url.pathname === '/' ? '' : '/';
@@ -12,7 +13,7 @@ const links = [
 ---
 <header class="hdr" data-theme="dark">
   <div class="hdr-in">
-    <a href={`${base}#topo`} class="wm wm--hdr" aria-label="Dakar Digital, voltar ao início"><span>Dakar</span></a>
+    <a href={`${base}#topo`} class="logo logo--hdr" aria-label="Dakar Digital, voltar ao início"><Fragment set:html={logo} /></a>
     <nav class="nav" aria-label="Principal">
       {links.map((l) => <a href={l.href}>{l.label}</a>)}
     </nav>

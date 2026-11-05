@@ -23,12 +23,18 @@ Frases-base: "Do desconhecido ao cliente com horário marcado." · "Não entrega
 
 ## Logotipo
 
-O logotipo é tipográfico: **Dakar** em Sora 300, com D maiúsculo, inclinado −9° (`skewX(-9deg)`), espaçamento −0.06em. Abaixo, opcionalmente, **DIGITAL** em IBM Plex Mono 300, espaçamento 0.86em, em `orange-text`. Ainda não há arquivo vetorial do logo: use o componente **Wordmark** até a versão final em SVG.
+Logo oficial em vetor na pasta `logo/`:
 
-- Sobre grafite: texto `mist`.
-- Sobre névoa ou areia: texto `graphite`.
-- Sobre laranja: texto `graphite`.
-- Não aplicar degradê no nome, não contornar, não adicionar ponto ou símbolo, não usar caixa toda alta.
+| Arquivo | Uso |
+| --- | --- |
+| `dakar-logo-claro.svg` | Só "Dakar", claro (#FFFEFA), sobre grafite. Menu, avatares, espaços pequenos |
+| `dakar-logo-escuro.svg` | Só "Dakar", grafite, sobre névoa ou areia |
+| `dakar-logo-completo-claro.svg` | "Dakar" + "Digital Marketing & Design Tech AI", sobre grafite. Rodapé, apresentações, documentos |
+| `dakar-logo-completo-escuro.svg` | Versão completa em grafite, sobre fundos claros |
+
+- Abaixo de ~120px de largura, use a versão só "Dakar": a assinatura fica ilegível.
+- Não distorcer, não aplicar degradê, contorno ou sombra, não trocar a fonte.
+- O favicon usa o "D" do logo sobre grafite com a luz laranja.
 
 ## Cor
 

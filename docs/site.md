@@ -59,7 +59,7 @@ npm run build    # gera a versão final em dist/
 
 ## Qualidade verificada
 
-- Visual igual ao protótipo aprovado (`index.html` de 16/10/2026) na comparação pixel a pixel no computador e no celular, exceto o logo do menu (aguardando o SVG definitivo) e o ícone do WhatsApp (glifo oficial).
+- Visual igual ao protótipo aprovado (`index.html` de 16/10/2026) na comparação pixel a pixel no computador e no celular, exceto o ícone do WhatsApp (glifo oficial). O logo oficial em SVG entrou depois, no menu (só "Dakar") e no rodapé (versão completa).
 - Lighthouse: celular 99 de desempenho, computador 100; acessibilidade, boas práticas e SEO 100 nos dois.
 - Luz na borda só em "Falar com especialista", "Falar com a Dakar" e no card Operação completa.
 - Barras do relatório começam a crescer quando a seção aparece na tela.
